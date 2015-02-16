@@ -7,7 +7,10 @@ Must be used alongside [minecraft server script](https://github.com/sandain/Mine
 * Change the log file name into a proper one for your installation.
 * Make a cronjob calling the server_check_script.sh file.
 > For example, to make a 1 minute cronjob calling
+> ```
 > crontab -e
+> ```
+> And then adding this code to the file
 > ```
 > * * * * * /home/minecraft/derp/server_check_script.sh > /dev/null
 > ```
