@@ -1,5 +1,4 @@
 #!/bin/bash
-#?/etc/init.d/minecraft_server status world > derp.log
 
 # get the world name from command line
 world_name=$1
