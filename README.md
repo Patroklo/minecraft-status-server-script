@@ -9,6 +9,7 @@ Must be used alongside [minecraft server script](https://github.com/sandain/Mine
 > For example, to make a 1 minute cronjob calling
 > crontab -e
 > * * * * * /home/minecraft/derp/server_check_script.sh > /dev/null
+
 * Profit!
 
 ## Ways of calling the file
