@@ -16,7 +16,8 @@ check_status()
 	# the server name, if it is not "running" then it's not active
 	# and will return a 0 in that case
 	return_call=$(mc_call "status $world_name")
-	server_state=`expr match "$return_call" '.*'$world_name': \(.*\)version'`
+	server_state=`expr match "$return_call" '.*'$world_name': \(\w\+\)'`
+
 	if [[ $server_state == "running"* ]];
 	then
 	  echo 1
@@ -50,11 +51,11 @@ new_log()
 	echo "$NOW - $1" >> $log_file
 }
 
-
+echo "llega"
 # 1 - check that the server is still running
 is_running=$(check_status)
 
-if [ $is_running == 1 ];
+if [[ $is_running == 1 ]];
 then
 	new_log "Server is online!"
 	# 2 - if server is running we store the memory data in disk
@@ -64,6 +65,11 @@ else
 	# 3 - if server is down, we start it again
 	new_log "Server is offline!"
 	start_server
+
+        PIDS=`pidof java`
+        for p in $PIDS; do
+           chrt -f -p 10 $p
+        done
 	new_log "Server started"
 fi
 exit 0
