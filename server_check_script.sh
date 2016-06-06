@@ -51,7 +51,6 @@ new_log()
 	echo "$NOW - $1" >> $log_file
 }
 
-echo "llega"
 # 1 - check that the server is still running
 is_running=$(check_status)
 
